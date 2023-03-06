@@ -1,6 +1,6 @@
 import logo from '../../assets/cd-logo.svg'
 import pin from '../../assets/icons/pin.svg'
-import cart from '../../assets/icons/cart.svg'
+import { ShoppingCart, MapPin } from 'phosphor-react'
 import styles from './styles.module.scss'
 
 export function Header(){
@@ -9,12 +9,12 @@ export function Header(){
             <img src={logo} alt="Coffee Delivery Logo: A cup of coffee whit a rocket." />
             <div>
                 <div>
-                    <img src={pin} alt="Map pin." />
+                    <MapPin size={20} weight="fill" />
                     <span>Porto Alegre, RS</span>
                 </div>
 
                 <button>
-                    <img src={cart} alt="Map pin." />
+                    <ShoppingCart size={22} weight="fill" />
                 </button>
             </div>
         </header>

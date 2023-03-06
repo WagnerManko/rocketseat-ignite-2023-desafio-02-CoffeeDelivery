@@ -21,6 +21,10 @@
             gap: 4px;
             background-color: var(--purple-100);
 
+            svg {
+                color: var(--purple-200);
+            }
+
             span {
                 font-family: 'Roboto';
                 font-style: normal;
@@ -39,6 +43,10 @@
             border-radius: 6px;
             background-color: var(--yellow-100);
             padding: 8px;
+
+            svg {
+                color: var(--yellow-300);
+            }
         }
     }
 }
