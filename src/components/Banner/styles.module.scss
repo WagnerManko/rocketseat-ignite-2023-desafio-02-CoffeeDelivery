@@ -1,0 +1,43 @@
+.banner {
+    height: 544px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .bannerText {
+        height: 360px;
+        width: 100%;
+        max-width: 588px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            h1 {
+                font-family: 'Baloo 2';
+                font-style: normal;
+                font-weight: 800;
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 1.25rem;
+                color: var(--black-300);
+            }
+        }
+
+        .differentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+        }
+    }
+}

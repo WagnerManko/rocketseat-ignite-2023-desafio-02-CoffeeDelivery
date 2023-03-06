@@ -1,0 +1,42 @@
+.info {
+    min-width: 232px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    span {
+        height: 32px;
+        width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+
+        svg {
+            color: var(--background);
+        }
+
+        p {
+            font-style: normal;
+            font-weight: 400;
+            color: var(--black-200);
+        }
+    }
+
+    .cart {
+        background-color: var(--yellow-300);
+    }
+
+    .package {
+        background-color: var(--black-200);
+    }
+
+    .timer {
+        background-color: var(--yellow-200);
+    }
+    
+    .coffee {
+        background-color: var(--purple-200);
+    }
+}
