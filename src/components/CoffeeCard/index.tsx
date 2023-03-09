@@ -6,7 +6,7 @@ import { CoffeeProps } from '../../api/helpers/interfaces';
 
 export function CoffeeCard({id, name, description, cost, tags}: CoffeeProps){
     const [coffeeTotal, setCoffeeTotal] = useState(1);
-    const { cartItems, addToCart } = useContext(CartContext)
+    const { addToCart } = useContext(CartContext)
 
     const currentCoffee = {
         id,
@@ -57,7 +57,10 @@ export function CoffeeCard({id, name, description, cost, tags}: CoffeeProps){
                             <Plus size={14} />
                         </button>
                     </div>
-                    <button onClick={() => addToCart(currentCoffee)}>
+                    <button onClick={() => [
+                        addToCart(currentCoffee),
+                        setCoffeeTotal(1),
+                    ]}>
                         <ShoppingCart size={22} weight="fill" />
                     </button>
                 </div>

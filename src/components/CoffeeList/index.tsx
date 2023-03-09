@@ -3,19 +3,14 @@ import coffees from '../../api/coffees/coffees.json'
 import { useContext, useEffect } from 'react'
 import { CoffeeCard } from '../CoffeeCard'
 import { CartContext } from '../../contexts/CartContext'
+import { useStorage } from '../../hooks/useStorage'
 
 export function CoffeeList(){
-    const { loadStorageCart } = useContext(CartContext)
+    const { cartItems } = useContext(CartContext)
 
     useEffect(() => {
-        const storageCartItems = localStorage.getItem(
-            '@coffee-delivery:cartItems',
-        )
-
-        if (storageCartItems) {
-            loadStorageCart(JSON.parse(storageCartItems))
-        }
-      },[])
+        useStorage('post', cartItems)
+    }, [cartItems])
 
     return (
         <div className={styles.coffees}>
