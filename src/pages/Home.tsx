@@ -3,15 +3,18 @@ import { Banner } from '../components/Banner'
 
 import styles from './styles.module.scss'
 import { CoffeeList } from '../components/CoffeeList'
+import { CartContextProvider } from '../contexts/CartContext'
 
 export function Home(){
     return (
-        <div className={styles.home}>
-            <Header />
+        <CartContextProvider>
+            <div className={styles.home}>
+                <Header />
 
-            <Banner />
+                <Banner />
 
-            <CoffeeList />
-        </div>
+                <CoffeeList />
+            </div>
+        </CartContextProvider>
     )
 }
