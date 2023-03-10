@@ -1,4 +1,4 @@
-import { Layout } from '../../components/layout'
+import { Layout } from '../../layout'
 import { Banner } from '../../components/Banner'
 import { CoffeeList } from '../../components/CoffeeList'
 
