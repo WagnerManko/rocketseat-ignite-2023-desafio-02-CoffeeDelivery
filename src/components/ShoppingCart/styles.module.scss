@@ -1,0 +1,165 @@
+.cartItem {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--gray-300);
+
+    .coffee {  
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        img {
+            width: 64px;
+        }
+
+        h1 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            color: var(--black-300);
+        }
+
+        .coffeeQuantity {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            > div {
+                display: flex;
+                gap: 8px;
+
+                .addAndRemoveBtn {
+                    height: 32px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: var(--gray-300);
+                    border-radius: 6px;
+                    gap: 4px;
+    
+                    span {
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: 16px;
+                        text-align: center;
+                        color: var(--black-400);
+                    }
+    
+                    button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border: none;
+                        background-color: transparent;
+    
+                        svg {
+                            color: var(--purple-200);
+                        }
+    
+                        svg:hover {
+                            color: var(--purple-300);
+                            transition: color 0.2s;
+                        }
+                    }
+                }
+            }            
+            
+            button {
+                min-height: 32px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                padding: 4px 8px;
+                gap: 4px;
+                background: var(--gray-300);
+                border-radius: 6px;
+                border: none;
+
+                p {
+                    font-family: 'Roboto', sans-serif;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 160%;
+                    text-transform: uppercase;
+                }
+
+                svg {
+                    color: var(--purple-200);
+                }
+            }
+        }
+    }
+
+    p {
+        font-family: 'Baloo 2';
+        font-style: normal;
+        font-weight: 800;
+        font-size: 1.5rem;
+        line-height: 130%;
+        color: var(--black-200);
+    }
+}
+
+.amount {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    p {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: var(--black-200);
+
+        span {
+            font-size: 16px;
+        }
+    }
+
+    >:last-child {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--black-300);
+
+        span {
+            font-size: 20px;
+            color: var(--black-300);
+        }
+    }
+
+    button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 8px;
+        gap: 4px;
+        background: var(--yellow-200);
+        border-radius: 6px;
+        border: 0;
+        margin-top: 12px;
+
+        > span {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px !important;
+            line-height: 160%;
+            text-transform: uppercase;
+            color: var(--white) !important;
+        }
+    }
+}
