@@ -1,9 +1,14 @@
-import logo from '../../assets/cd-logo.svg'
-import pin from '../../assets/icons/pin.svg'
 import { ShoppingCart, MapPin } from 'phosphor-react'
+
+import logo from '../../assets/cd-logo.svg'
 import styles from './styles.module.scss'
 
+import { useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
+
 export function Header(){
+    const { cartItems } = useContext(CartContext)
+
     return (
         <header className={styles.header}>
             <img src={logo} alt="Coffee Delivery Logo: A cup of coffee whit a rocket." />
@@ -15,6 +20,7 @@ export function Header(){
 
                 <button>
                     <ShoppingCart size={22} weight="fill" />
+                    <span><p>{cartItems.length}</p></span>
                 </button>
             </div>
         </header>
