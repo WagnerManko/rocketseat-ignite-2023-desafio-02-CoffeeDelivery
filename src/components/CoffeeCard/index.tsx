@@ -46,7 +46,7 @@ export function CoffeeCard({id, name, description, cost, tags}: CoffeeProps){
             </div>
 
             <div className={styles.footer}>
-                <p><span>R$</span> {Number(cost).toFixed(2)}</p>
+                <p><span>R$</span> {Number(cost * coffeeTotal).toFixed(2)}</p>
                 <div className={styles.buy}>
                     <div>
                         <button onClick={removeUnityCoffee}>
