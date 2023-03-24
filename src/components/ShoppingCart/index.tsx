@@ -1,13 +1,11 @@
-import { useContext, useEffect, useReducer, useState } from "react"
+import { useContext } from "react"
 import { CartContext } from "../../contexts/CartContext"
 
 import styles from './styles.module.scss'
 import { Minus, Plus, Trash } from "phosphor-react"
-import { CoffeeProps } from "../../api/helpers/interfaces"
-import produce from "immer"
 
 export function ShoppingCart(){
-    const { cartItems, addToCart, removeToCart, deleteToCart, cartTotal } = useContext(CartContext)
+    const { cartItems, addToCart, removeToCart, deleteToCart } = useContext(CartContext)
 
     return (
         <>
@@ -45,7 +43,7 @@ export function ShoppingCart(){
             ))}
 
             <div className={styles.amount}>
-                <p>Total de itens <span>R$ {Number(cartTotal).toFixed(2)}</span></p>
+                <p>Total de itens <span>R$ {Number(0).toFixed(2)}</span></p>
                 <p>Entrega <span>R$ {Number(3.5).toFixed(2)}</span></p>
                 <p>Total <span>R$ {Number(0).toFixed(2)}</span></p>
                 <button><span>Confirmar Pedido</span></button>

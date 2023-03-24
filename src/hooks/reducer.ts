@@ -29,7 +29,7 @@ export function cartReducer(state: CoffeeProps[], action: any){
         useStorage('delete')
 
         return produce(state, () => coffeeData)
-        
+
     } else {
         return state
     }

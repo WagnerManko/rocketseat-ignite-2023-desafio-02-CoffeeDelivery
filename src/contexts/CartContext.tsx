@@ -3,7 +3,6 @@ import {
   ReactNode,
   useEffect,
   useReducer,
-  useState,
 } from 'react'
 
 import { CoffeeProps } from '../api/helpers/interfaces'
@@ -16,24 +15,18 @@ interface CartContextType {
     addToCart: (currentCoffee: CoffeeProps) => void
     removeToCart: (currentCoffee: CoffeeProps) => void
     deleteToCart: (currentCoffee: CoffeeProps) => void
-    cartTotal: number
 }
 interface CartContextProviderProps {
   children: ReactNode
-}
-
-interface AddToCartProps {
-  currentCoffee: CoffeeProps
-  cart: boolean
 }
 
 export const CartContext = createContext({} as CartContextType)
 
 export function CartContextProvider({children}: CartContextProviderProps) {
     const [cartItems, dispatch] = useReducer(cartReducer, useStorage('get'))
-    const [cartTotal, setCartTotal] = useState(0)
 
-    function addToCart(currentCoffee: CoffeeProps | CoffeeProps[]){
+    // function addToCart(currentCoffee: CoffeeProps | CoffeeProps[]){
+    function addToCart(currentCoffee: CoffeeProps){
       dispatch({
         type: 'ADD_CART_ITEM',
         payload: {
@@ -58,7 +51,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
     }
 
     function deleteToCart(currentCoffee: CoffeeProps){
-      
       const itemsRemains = cartItems.filter(item => item.id !== currentCoffee.id)
 
       dispatch({
@@ -69,14 +61,8 @@ export function CartContextProvider({children}: CartContextProviderProps) {
       })
     }
 
-    // function updateCartValue(){
-      
-    // }
-
     useEffect(() => {
         useStorage('post', cartItems)
-
-        // updateCartValue()
     }, [cartItems])
 
   return (
@@ -86,7 +72,6 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         addToCart,
         removeToCart,
         deleteToCart,
-        cartTotal,
       }}
     >
       {children}
