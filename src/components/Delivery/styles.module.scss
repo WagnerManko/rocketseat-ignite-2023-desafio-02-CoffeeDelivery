@@ -1,0 +1,113 @@
+.formTitle {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    svg {
+        color: var(--yellow-300)
+    }
+
+    > div {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+
+        h1 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 130%;
+            color: var(--black-300);
+        }
+
+        h2 {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 130%;
+            color: var(--black-200);
+        }
+    }
+}
+
+.divForm {
+    width: 100%;
+    display: flex;
+
+    form {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 16px;
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--gray-200);
+            border: 1px solid #E6E5E5;
+            border-radius: 4px;
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 0.75rem;
+            line-height: 130%;
+            color: var(--black-200);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--yellow-300);
+        }
+
+        input::placeholder {
+            color: var(--black-100);
+        }
+
+        > div {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            position: relative;
+
+            input {
+                width: auto;
+                flex: 1;
+            }
+
+            > div {
+                display: flex;
+                width: 100%;
+                max-width: 348px;
+
+                span {
+                    position: absolute;
+                    top: 14px;
+                    right: 12px;
+                    font-family: 'Roboto';
+                    font-style: italic;
+                    font-weight: 400;
+                    font-size: 0.75rem;
+                    line-height: 130%;
+                    color: var(--black-100);
+                }
+            }   
+        }
+
+        .cep, .number, .neighborhood {
+            max-width: 200px;
+        }
+
+        .city {
+            max-width: 276px;
+        }
+
+        .uf {
+            max-width: 60px;
+        }
+    }
+}
