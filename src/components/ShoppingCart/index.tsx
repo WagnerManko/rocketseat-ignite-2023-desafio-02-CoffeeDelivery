@@ -1,13 +1,13 @@
-import { useContext, useReducer } from "react"
+import { useContext, useEffect, useReducer, useState } from "react"
 import { CartContext } from "../../contexts/CartContext"
 
 import styles from './styles.module.scss'
 import { Minus, Plus, Trash } from "phosphor-react"
+import { CoffeeProps } from "../../api/helpers/interfaces"
+import produce from "immer"
 
 export function ShoppingCart(){
-    const { cartItems } = useContext(CartContext)
-
-    console.log(cartItems)
+    const { cartItems, addToCart, removeToCart, deleteToCart, cartTotal } = useContext(CartContext)
 
     return (
         <>
@@ -20,16 +20,22 @@ export function ShoppingCart(){
                             <h1>{item.name}</h1>
                             <div>
                                 <div className={styles.addAndRemoveBtn}>
-                                    <button>
+                                    <button onClick={
+                                        () => removeToCart(item)
+                                    }>
                                         <Minus size={14} />
                                     </button>
-                                    <span>1</span>
-                                    <button>
+                                    <span>{item.quantity}</span>
+                                    <button onClick={
+                                        () => addToCart({...item, quantity: 1})
+                                    }>
                                         <Plus size={14} />
                                     </button>
                                 </div>
                                 
-                                <button><Trash size={16} /> <p>Remover</p></button>
+                                <button onClick={() => deleteToCart(item)}>
+                                    <Trash size={16} /> <p>Remover</p>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -39,9 +45,9 @@ export function ShoppingCart(){
             ))}
 
             <div className={styles.amount}>
-                <p>Total de itens <span>R$ 29,70</span></p>
-                <p>Entrega <span>R$ 3,50</span></p>
-                <p>Total <span>R$ 33,20</span></p>
+                <p>Total de itens <span>R$ {Number(cartTotal).toFixed(2)}</span></p>
+                <p>Entrega <span>R$ {Number(3.5).toFixed(2)}</span></p>
+                <p>Total <span>R$ {Number(0).toFixed(2)}</span></p>
                 <button><span>Confirmar Pedido</span></button>
             </div>
         </>

@@ -1,6 +1,6 @@
 import { CoffeeProps } from "../api/helpers/interfaces"
 
-export function useStorage(methods: 'get' | 'post', items?: CoffeeProps[]){
+export function useStorage(methods: 'get' | 'post' | 'delete', items?: CoffeeProps[] | CoffeeProps){
     if(methods === 'get') {
         const parsedItems = localStorage.getItem(
             '@coffee-delivery:cartItems',
@@ -14,7 +14,20 @@ export function useStorage(methods: 'get' | 'post', items?: CoffeeProps[]){
     }
 
     if(methods === 'post') {
-        const stateJSON = JSON.stringify(items)
-        localStorage.setItem('@coffee-delivery:cartItems', stateJSON)
+        if (items) {
+            const stateJSON = JSON.stringify(items)
+
+            if(stateJSON.length > 2){
+                localStorage.setItem('@coffee-delivery:cartItems', stateJSON)
+            }
+        }
+        
+        return
+    }
+
+    if(methods === 'delete') {
+        localStorage.removeItem('@coffee-delivery:cartItems')
+
+        return
     }
 }
