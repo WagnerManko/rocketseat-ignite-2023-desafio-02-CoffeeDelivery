@@ -30,6 +30,10 @@ export function cartReducer(state: CoffeeProps[], action: any){
 
         return produce(state, () => coffeeData)
 
+    } else if (action.type === 'CLEAN_CART') {
+        useStorage('delete')
+
+        return []
     } else {
         return state
     }

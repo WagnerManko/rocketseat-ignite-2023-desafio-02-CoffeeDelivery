@@ -15,6 +15,7 @@ interface CartContextType {
     addToCart: (currentCoffee: CoffeeProps) => void
     removeToCart: (currentCoffee: CoffeeProps) => void
     deleteToCart: (currentCoffee: CoffeeProps) => void
+    cleanCart: () => void
 }
 interface CartContextProviderProps {
   children: ReactNode
@@ -61,6 +62,15 @@ export function CartContextProvider({children}: CartContextProviderProps) {
       })
     }
 
+    function cleanCart(){
+      dispatch({
+        type: 'CLEAN_CART',
+        payload: {
+          data: []
+        }
+      })
+    }
+
     useEffect(() => {
         useStorage('post', cartItems)
     }, [cartItems])
@@ -72,6 +82,7 @@ export function CartContextProvider({children}: CartContextProviderProps) {
         addToCart,
         removeToCart,
         deleteToCart,
+        cleanCart
       }}
     >
       {children}

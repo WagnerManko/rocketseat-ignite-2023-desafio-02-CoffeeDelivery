@@ -6,22 +6,24 @@ import { Minus, Plus, Trash } from "phosphor-react"
 import { NavLink } from "react-router-dom"
 
 export function ShoppingCart(){
-    const { cartItems, addToCart, removeToCart, deleteToCart } = useContext(CartContext)
-    const [cartTotal, setCartTotal] = useState(0)
+    const { cartItems, addToCart, removeToCart, deleteToCart, cleanCart } = useContext(CartContext)
+    const [ cartTotal, setCartTotal ] = useState(0)
+    const [ deliveryCost, setDeliveryCost ] = useState(0)
 
-    // function calcCartTotal(){
-    //     // setCartTotal(0)
+    function calcCartTotal(){
+        let total = 0;
 
-    //     cartItems.map(item => {
-    //         const totalItem = item.cost * item.quantity!
+        for(let i = 0; i < cartItems.length; i++){
+            total = total + cartItems[i].cost * cartItems[i].quantity!
+        }
 
-    //         setCartTotal(cartTotal + totalItem)
-    //     })
-    // }
+        total !== 0 && setDeliveryCost(3.5)
+        setCartTotal(total)
+    }
 
-    // useEffect(() => {
-    //     calcCartTotal()
-    // }, [])
+    useEffect(() => {
+        calcCartTotal()
+    }, [cartItems])
 
     return (
         <>
@@ -60,10 +62,12 @@ export function ShoppingCart(){
 
             <div className={styles.amount}>
                 <p>Total de itens <span>R$ {Number(cartTotal).toFixed(2)}</span></p>
-                <p>Entrega <span>R$ {Number(3.5).toFixed(2)}</span></p>
-                <p>Total <span>R$ {Number(0).toFixed(2)}</span></p>
+                <p>Entrega <span>R$ {Number(deliveryCost).toFixed(2)}</span></p>
+                <p>Total <span>R$ {Number(cartTotal + deliveryCost).toFixed(2)}</span></p>
                 <NavLink to="/success" title="Success">
-                    <button><span>Confirmar Pedido</span></button>
+                    <button onClick={() => cleanCart()}>
+                        <span>Confirmar Pedido</span>
+                    </button>
                 </NavLink>
             </div>
         </>
