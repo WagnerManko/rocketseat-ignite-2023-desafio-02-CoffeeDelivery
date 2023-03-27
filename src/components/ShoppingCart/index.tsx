@@ -1,11 +1,27 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../../contexts/CartContext"
 
 import styles from './styles.module.scss'
 import { Minus, Plus, Trash } from "phosphor-react"
+import { NavLink } from "react-router-dom"
 
 export function ShoppingCart(){
     const { cartItems, addToCart, removeToCart, deleteToCart } = useContext(CartContext)
+    const [cartTotal, setCartTotal] = useState(0)
+
+    // function calcCartTotal(){
+    //     // setCartTotal(0)
+
+    //     cartItems.map(item => {
+    //         const totalItem = item.cost * item.quantity!
+
+    //         setCartTotal(cartTotal + totalItem)
+    //     })
+    // }
+
+    // useEffect(() => {
+    //     calcCartTotal()
+    // }, [])
 
     return (
         <>
@@ -43,10 +59,12 @@ export function ShoppingCart(){
             ))}
 
             <div className={styles.amount}>
-                <p>Total de itens <span>R$ {Number(0).toFixed(2)}</span></p>
+                <p>Total de itens <span>R$ {Number(cartTotal).toFixed(2)}</span></p>
                 <p>Entrega <span>R$ {Number(3.5).toFixed(2)}</span></p>
                 <p>Total <span>R$ {Number(0).toFixed(2)}</span></p>
-                <button><span>Confirmar Pedido</span></button>
+                <NavLink to="/success" title="Success">
+                    <button><span>Confirmar Pedido</span></button>
+                </NavLink>
             </div>
         </>
     )
